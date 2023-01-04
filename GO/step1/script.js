@@ -1,21 +1,36 @@
 'use strict';
 
-const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+for (let i = 0; i < 3; i++) {
+    console.log(i);
+    for (let j = 0; j < 3; j++) {
+        console.log(j);
+    }
+}
 
-const personalMovieDB = {
-    count: numberOfFilms,
-    movies: {},
-    actors: {},
-    genres: [],
-    privat: false
-};
+// *
+// **
+// ***
+// ****
+// *****
 
-const lastFilms1 = prompt('Один из последних просмотренных фильмов?', ''),
-    rateYourLastFilm1 = prompt('На сколько оцените его?', ''),
-    lastFilms2 = prompt('Один из последних просмотренных фильмов?', ''),
-    rateYourLastFilm2 = prompt('На сколько оцените его?', '');
+let result = '';
+const length = 7;
+for (let i = 1; i < length; i++) {
+    for (let j = 0; j < i; j++) {
+        result += '*';
+    }
+    result += '\n';
+}
+console.log(result);
 
-personalMovieDB.movies[lastFilms1] = rateYourLastFilm1;
-personalMovieDB.movies[lastFilms2] = rateYourLastFilm2;
 
-console.log(personalMovieDB);
+first: for (let i = 0; i < 3; i++) {
+    console.log(`First level: ${i}`);
+    for (let j = 0; j < 3; j++) {
+        console.log(`Second level: ${j}`);
+        for (let k = 0; k < 3; k++) {
+            if (k === 2) break first;
+            console.log(`Third level: ${k}`);
+        }
+    }
+}
