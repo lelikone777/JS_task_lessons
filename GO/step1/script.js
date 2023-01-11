@@ -69,14 +69,44 @@
 //     return str;
 // }
 
-const family = ['Peter', 'Ann', 'Alex', 'Linda'];
-function showFamily(arr) {
-    return 'Семья состоит из: ' + arr.join(' ');
-}
-console.log(showFamily(family));
+// const family = ['Peter', 'Ann', 'Alex', 'Linda'];
+// function showFamily(arr) {
+//     return 'Семья состоит из: ' + arr.join(' ');
+// }
+// console.log(showFamily(family));
+//
+// const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
+// function standardizeStrings(arr) {
+//     return favoriteCities.join('\n').toLocaleLowerCase();
+// }
+// console.log(standardizeStrings(favoriteCities));
 
-const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
-function standardizeStrings(arr) {
-    return favoriteCities.join('\n').toLocaleLowerCase();
+// const someString = 'This is some strange string';
+// let reverse = function (str) {
+//     return str.split('').reverse().join('');
+// }
+// console.log(reverse(someString));
+
+const baseCurrencies = ['USD', 'EUR'];
+const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+let currencies = [...baseCurrencies, ...additionalCurrencies];
+let missingCurrencies = 'USD';
+
+function availableCurr(arr, missingCurr) {
+    if (arr.length < 1) {
+        return 'Нет доступных валют';
+    }
+    if (missingCurr) {
+        currencies.forEach(function (item, i , currencies) {
+            if (item === missingCurrencies) {
+                delete arr.item
+            }
+        })
+    }
+
 }
-console.log(standardizeStrings(favoriteCities));
+
+console.log(availableCurr(currencies, missingCurrencies));
+
+
+
