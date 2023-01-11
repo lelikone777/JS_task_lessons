@@ -1,29 +1,72 @@
-// 'use strict';
-// function calculateVolumeAndArea(length) {
-//     if (typeof (length) !== 'number' || length < 0 || !Number.isInteger(length)) {
-//         return "При вычислении произошла ошибка";
-//     }
-//
-//     let volume = 0,
-//         area = 0;
-//
-//     volume = length * length * length;
-//     // length ** 3 - это тоже самое, что и выше или варианты через цикл.
-//     // ** - это оператор степени, напоминаю. Но онлайн редактор его не принимает =/
-//     area = 6 * (length * length);
-//
-//     return `Объем куба: ${volume}, площадь всей поверхности: ${area}`;
-// }
+'use strict';
 
-// Место для второй задачи
-function getCoupeNumber(seatNumber) {
-    if (typeof (seatNumber) !== 'number' || seatNumber < 0 || !Number.isInteger(seatNumber)) {
-        return "Ошибка. Проверьте правильность введенного номера места";
-    }
+const personalPlanPeter = {
+    name: "Peter",
+    age: "22",
+    skills: {
+        languages: ['ru', 'eng', 'gb'],
+        programmingLangs: {
+            js: '20%',
+            php: '10%'
+        },
+        exp: '1 month'
+    },
+    showAgeAndLangs(ob) {
+        let str = '';
+        let age = '';
+        let sk = ob.skills.languages;
+        let la = '';
+        for (let key in personalPlanPeter) {
+            if (key === 'age') {
+                age = personalPlanPeter[key];
+            }
+           la = sk.join(' ').toUpperCase();
+        }
+        str += `Мне ${age} и я владею языками: ${la}'`;
+       return str;
 
-    if (seatNumber === 0 || seatNumber > 36) {
-        return "Таких мест в вагоне не существует";
     }
-    return Math.ceil(seatNumber / 4);
+};
+
+function showExperience(plan) {
+        for (let key in plan) {
+        if (key === 'exp') {
+            return plan[key];
+        }
+        if (typeof(plan[key]) === 'object') {
+            for (let i in plan[key]) {
+                if (i === 'exp') {
+                    return plan[key][i];
+                }
+            }
+        }
+    }
+}
+function showProgrammingLangs(plan) {
+
+    let str = '';
+    let lang = [];
+    let exp = [];
+    let skills = {};
+
+    for (let key in plan) {
+        if (typeof(plan[key]) === 'object') {
+            for (let i in plan[key]) {
+                if (i === 'programmingLangs') {
+                    for (let j in plan[key][i]) {
+                        lang.push(j);
+                        exp.push(plan[key][i][j]);
+                    }
+                }
+            }
+        }
+    }
+    for(let k = 0; k < lang.length; k++) {
+        skills[lang[k]] = exp[k];
+    }
+    for (let l in skills) {
+        str += `Язык ${l} изучен на ${skills[l]}%\n`;
+    }
+    return str;
 }
 
