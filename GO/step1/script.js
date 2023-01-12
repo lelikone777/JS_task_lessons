@@ -87,26 +87,70 @@
 // }
 // console.log(reverse(someString));
 
-const baseCurrencies = ['USD', 'EUR'];
-const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
-let currencies = [...baseCurrencies, ...additionalCurrencies];
-let missingCurrencies = 'USD';
+// const baseCurrencies = ['USD', 'EUR'];
+// const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+// let currencies = [...baseCurrencies, ...additionalCurrencies];
+// let missingCurrencies = 'USD';
+//
+// function availableCurr(arr, missingCurr) {
+//     if (arr.length < 1) {
+//         return 'Нет доступных валют';
+//     }
+//     if (missingCurr) {
+//         currencies.forEach(function (item, i , currencies) {
+//             if (item === missingCurrencies) {
+//                 delete arr.item
+//             }
+//         })
+//     }
+//
+// }
+//
+// console.log(availableCurr(currencies, missingCurrencies));
 
-function availableCurr(arr, missingCurr) {
-    if (arr.length < 1) {
-        return 'Нет доступных валют';
-    }
-    if (missingCurr) {
-        currencies.forEach(function (item, i , currencies) {
-            if (item === missingCurrencies) {
-                delete arr.item
-            }
-        })
-    }
 
+
+const shoppingMallData = {
+    shops: [
+        {width: 10, length: 5},
+        {width: 15, length: 7},
+        {width: 20, length: 5},
+        {width: 8, length: 10}
+    ],
+    height: 5,
+    moneyPer1m3: 30,
+    budget: 50000
+};
+
+
+
+
+
+function isBudgetEnough(data) {
+    const {shops} = shoppingMallData;
+    let arrS = [];
+    let arrV = [];
+    shops.forEach(function (shop, i) {
+        let s = shop.width * shop.length;
+        arrS.push(s);
+        let v = shop.width * shop.length * shoppingMallData.height;
+        arrV.push(v);
+    });
+    let arrSumS = 0;
+    arrS.forEach(function (item, i) {
+        arrSumS += item;
+    });
+    let arrVSumV = 0;
+    arrV.forEach(function (item, i) {
+        arrVSumV += item;
+    });
+    let money = arrVSumV * shoppingMallData.moneyPer1m3;
+    console.log(money);
+    if (shoppingMallData.budget > money) {
+        return 'Бюджета недостаточно';
+    } else {
+        return 'Бюджета достаточно';
+    }
 }
-
-console.log(availableCurr(currencies, missingCurrencies));
-
-
+console.log(isBudgetEnough(shoppingMallData));
 
