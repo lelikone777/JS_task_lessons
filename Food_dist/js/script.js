@@ -113,6 +113,7 @@ window.addEventListener('DOMContentLoaded', () => {
         modal.classList.remove('hide');
         document.body.style.overflow = 'hidden';
         clearInterval(modalTimerId);
+        window.removeEventListener('scroll', showModalByScroll);
     }
 
     modalTrigger.forEach((btn) => {
