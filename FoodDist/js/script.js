@@ -257,12 +257,9 @@ window.addEventListener('DOMContentLoaded', function() {
 
             const formData = new FormData(form);
 
-            const object = {};
-            formData.forEach(function (value, key) {
-               object[key] = value;
-            });
+            const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
-            postData('db.json', JSON.stringify(object))
+            postData('db.json', json)
                 .then(data => {
                 console.log(data);
                 showThanksModal(message.success);
